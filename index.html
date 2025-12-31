@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Happy New Year</title>
+
+  <!-- Luxury + cute fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Quicksand:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Quicksand', sans-serif;
+      background: radial-gradient(circle at top, #fffdf9, #f3e8ee);
+      color: #3f2b3a;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .page {
+      display: none;
+      padding: 60px 26px;
+      max-width: 520px;
+      margin: auto;
+      animation: fade 1.2s ease;
+    }
+
+    .active {
+      display: block;
+    }
+
+    h1, h2 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+    }
+
+    p {
+      line-height: 1.8;
+      font-size: 16px;
+      opacity: 0.9;
+    }
+
+    button {
+      margin-top: 40px;
+      padding: 14px 36px;
+      font-size: 14px;
+      border-radius: 999px;
+      border: none;
+      background: linear-gradient(135deg, #e8cfd9, #d9b8c4);
+      color: #3a2432;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+    }
+
+    .teddy {
+      font-size: 78px;
+      margin-bottom: 20px;
+      animation: breathe 4s ease-in-out infinite;
+    }
+
+    input {
+      width: 100%;
+      padding: 14px;
+      border-radius: 16px;
+      border: 1px solid #e3d6dd;
+      font-size: 15px;
+      margin-top: 20px;
+      background: rgba(255,255,255,0.7);
+    }
+
+    @keyframes fade {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes breathe {
+      0%,100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    /* floating minimal stickers */
+    .float {
+      position: absolute;
+      font-size: 18px;
+      opacity: 0.35;
+      animation: float 12s linear infinite;
+    }
+
+    @keyframes float {
+      from { bottom: -30px; }
+      to { bottom: 110%; }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- YouTube music -->
+<iframe id="music" width="0" height="0" src="" allow="autoplay"></iframe>
+
+<!-- PAGE 1 -->
+<div class="page active">
+  <div class="teddy">🧸</div>
+  <h1>Happy New Year</h1>
+  <p>
+    A gentle beginning.<br>
+    Something made quietly, just for you.
+  </p>
+  <button onclick="start()">Begin</button>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page">
+  <div class="teddy">🐻</div>
+  <h2>A softer year</h2>
+  <p>
+    More calm mornings.<br>
+    More moments that don’t rush.<br>
+    More warmth than noise.
+  </p>
+  <button onclick="next()">Next</button>
+</div>
+
+<!-- PAGE 3 -->
+<div class="page">
+  <h2>Ideas for the year</h2>
+  <p>
+    Romanticize ordinary days.<br>
+    Keep memories, not pressure.<br>
+    Choose what feels peaceful.
+  </p>
+  <button onclick="next()">Next</button>
+</div>
+
+<!-- PAGE 4 -->
+<div class="page">
+  <h2>Your intentions</h2>
+  <p>
+    You don’t need big goals.<br>
+    Even gentle wishes matter.
+  </p>
+  <input placeholder="Write anything your heart wants…" />
+  <button onclick="next()">Next</button>
+</div>
+
+<!-- PAGE 5 -->
+<div class="page">
+  <div class="teddy">🤍</div>
+  <h1>I’m always with you</h1>
+  <p>
+    In loud days.<br>
+    In quiet days.<br><br>
+    Thank you for being here.<br>
+    Happy New Year.
+  </p>
+</div>
+
+<script>
+  let pages = document.querySelectorAll(".page");
+  let current = 0;
+
+  function start() {
+    document.getElementById("music").src =
+      "https://www.youtube.com/embed/OMOGaugKpzs?autoplay=1";
+    next();
+  }
+
+  function next() {
+    pages[current].classList.remove("active");
+    current++;
+    if (current < pages.length) {
+      pages[current].classList.add("active");
+    }
+  }
+
+  // minimal floating elements
+  setInterval(() => {
+    const icons = ["✦","❀","✧","♡"];
+    let el = document.createElement("div");
+    el.className = "float";
+    el.innerText = icons[Math.floor(Math.random()*icons.length)];
+    el.style.left = Math.random()*100 + "%";
+    document.body.appendChild(el);
+    setTimeout(()=>el.remove(),12000);
+  }, 2500);
+</script>
+
+</body>
+  </html>
