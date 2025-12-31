@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Happy New Year 🧸✨</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2&family=Pacifico&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Baloo 2', cursive;
+      background: linear-gradient(180deg, #fff1f6, #fce7ff);
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .page {
+      display: none;
+      padding: 40px 20px;
+      animation: fade 1s ease;
+    }
+
+    .active {
+      display: block;
+    }
+
+    h1 {
+      font-family: 'Pacifico', cursive;
+      color: #7b3f61;
+    }
+
+    h2, p {
+      color: #6b3a5c;
+    }
+
+    button {
+      background: #ffb6c1;
+      border: none;
+      padding: 14px 30px;
+      border-radius: 30px;
+      font-size: 16px;
+      margin-top: 30px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #ff9aaa;
+    }
+
+    .animals {
+      font-size: 70px;
+      margin: 20px 0;
+      animation: bounce 2s infinite;
+    }
+
+    input {
+      padding: 12px;
+      border-radius: 20px;
+      border: 1px solid #ccc;
+      width: 80%;
+      font-size: 16px;
+      margin-top: 15px;
+    }
+
+    @keyframes bounce {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+    }
+
+    @keyframes fade {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .float {
+      position: absolute;
+      font-size: 22px;
+      animation: float 6s linear infinite;
+    }
+
+    @keyframes float {
+      from { bottom: -30px; opacity: 1; }
+      to { bottom: 100%; opacity: 0; }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- YouTube music -->
+<iframe id="music" width="0" height="0" src="" allow="autoplay"></iframe>
+
+<!-- PAGE 1 -->
+<div class="page active">
+  <div class="animals">🧸🎉✨</div>
+  <h1>Happy New Year</h1>
+  <p>A soft little surprise made with love 💖</p>
+  <button onclick="start()">Start</button>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page">
+  <div class="animals">🐻🐰🐱🦊</div>
+  <h2>Cuteness overload</h2>
+  <p>May this year be gentle, warm & kind to you 🌸</p>
+  <button onclick="next()">Next</button>
+</div>
+
+<!-- PAGE 3 -->
+<div class="page">
+  <div class="animals">🎆🌙⭐</div>
+  <h2>New Year ideas</h2>
+  <p>• Take more photos 📸</p>
+  <p>• Laugh without reason 😄</p>
+  <p>• Romanticize small moments ☕</p>
+  <p>• Choose peace over pressure 🌷</p>
+  <button onclick="next()">Next</button>
+</div>
+
+<!-- PAGE 4 -->
+<div class="page">
+  <div class="animals">💌🌸🕊️</div>
+  <h2>Wishes for you</h2>
+  <p>Soft mornings</p>
+  <p>Safe nights</p>
+  <p>Healing days</p>
+  <p>And love that feels easy 💖</p>
+  <button onclick="next()">Next</button>
+</div>
+
+<!-- PAGE 5 -->
+<div class="page">
+  <div class="animals">🧸📖✨</div>
+  <h2>Your New Year resolutions?</h2>
+  <input placeholder="Even small dreams matter…" />
+  <button onclick="next()">Next</button>
+</div>
+
+<!-- PAGE 6 -->
+<div class="page">
+  <div class="animals">🐻💗🌷</div>
+  <h1>I’m always with you</h1>
+  <p>No matter the year</p>
+  <p>No matter the phase</p>
+  <p>Thank you for existing 💖</p>
+  <p>Happy New Year ✨</p>
+</div>
+
+<script>
+  let pages = document.querySelectorAll(".page");
+  let current = 0;
+
+  function start() {
+    document.getElementById("music").src =
+      "https://www.youtube.com/embed/OMOGaugKpzs?autoplay=1";
+    next();
+  }
+
+  function next() {
+    pages[current].classList.remove("active");
+    current++;
+    if (current < pages.length) {
+      pages[current].classList.add("active");
+    }
+  }
+
+  // floating stickers
+  setInterval(() => {
+    const stickers = ["💖","✨","🌸","⭐","🧸","🐰","🎆"];
+    let el = document.createElement("div");
+    el.className = "float";
+    el.innerText = stickers[Math.floor(Math.random()*stickers.length)];
+    el.style.left = Math.random()*100 + "%";
+    document.body.appendChild(el);
+    setTimeout(()=>el.remove(),6000);
+  }, 700);
+</script>
+
+</body>
+</html>
